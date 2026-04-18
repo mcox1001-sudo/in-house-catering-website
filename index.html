@@ -1,331 +1,992 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>In-House Catering Solutions | Private Catering &amp; Operational Consulting</title>
-  <meta name="description" content="In-House Catering Solutions provides bespoke private catering and operational consulting for schools, corporate events, private functions and establishments across the UK.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>In-House Catering Solutions | Private Catering & Operational Consulting</title>
+<meta name="description" content="Bespoke private catering and operational consulting for schools, corporate events, and establishments across the UK.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* =============================================
+   IN-HOUSE CATERING — PREMIUM DEMO v2
+   ============================================= */
+:root {
+  --navy: #1a3555;
+  --navy-dark: #0f2236;
+  --navy-light: #244a73;
+  --gold: #c5963e;
+  --gold-light: #d4aa5e;
+  --gold-pale: #f0e6d2;
+  --cream: #faf8f4;
+  --dark: #1a1a1a;
+  --text: #3a3a3a;
+  --text-light: #6b6b6b;
+  --border: #e8e4de;
+  --white: #ffffff;
+  --radius: 10px;
+  --shadow-sm: 0 2px 12px rgba(0,0,0,.04);
+  --shadow-md: 0 8px 32px rgba(0,0,0,.06);
+  --shadow-lg: 0 20px 60px rgba(0,0,0,.1);
+  --transition: all .4s cubic-bezier(.4,0,.2,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: var(--text); background: var(--white);
+  line-height: 1.75; -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; transition: var(--transition); }
+ul { list-style: none; }
+h1,h2,h3,h4,h5 {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: var(--navy); line-height: 1.15; font-weight: 700;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 16px 38px; border-radius: 6px;
+  font-family: 'Inter', sans-serif; font-size: .9rem; font-weight: 600;
+  letter-spacing: .2px; cursor: pointer; transition: var(--transition);
+  border: 2px solid transparent; white-space: nowrap;
+}
+.btn-primary { background: var(--gold); color: #fff; border-color: var(--gold); }
+.btn-primary:hover { background: #b3842e; border-color: #b3842e; transform: translateY(-2px); box-shadow: 0 12px 28px rgba(197,150,62,.3); }
+.btn-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,.5); }
+.btn-outline:hover { background: #fff; color: var(--navy); border-color: #fff; transform: translateY(-2px); }
+.btn-navy { background: var(--navy); color: #fff; border-color: var(--navy); }
+.btn-navy:hover { background: var(--navy-light); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(26,53,85,.3); }
+.btn-white { background: #fff; color: var(--gold); border-color: #fff; }
+.btn-white:hover { background: transparent; color: #fff; border-color: #fff; }
+.btn-sm { padding: 12px 26px; font-size: .84rem; }
+.btn svg { width: 16px; height: 16px; }
+
+/* Arrow icon reusable */
+.arrow-icon { width: 16px; height: 16px; }
+
+/* =============================================
+   TOP BAR
+   ============================================= */
+.top-bar {
+  background: var(--navy-dark); color: rgba(255,255,255,.6);
+  font-size: .78rem; padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+}
+.top-bar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+.top-bar-left { display: flex; align-items: center; gap: 28px; }
+.top-bar-left a { color: var(--gold-light); display: flex; align-items: center; gap: 7px; font-weight: 500; }
+.top-bar-left a:hover { color: #fff; }
+.top-bar-right { color: rgba(255,255,255,.3); letter-spacing: 2.5px; text-transform: uppercase; font-size: .66rem; font-weight: 600; }
+
+/* =============================================
+   HEADER
+   ============================================= */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(0,0,0,.06);
+  transition: var(--transition);
+}
+.site-header.scrolled {
+  background: rgba(255,255,255,.98);
+  backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 2px 12px rgba(0,0,0,.08);
+}
+.header-inner { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; transition: padding .4s; }
+.site-header.scrolled .header-inner { padding: 10px 0; }
+
+/* Logo */
+.logo { display: flex; align-items: center; gap: 14px; color: var(--navy); }
+.logo-img { height: 52px; width: auto; transition: height .4s; }
+.site-header.scrolled .logo-img { height: 44px; }
+.logo-mark { display: flex; flex-direction: column; }
+.logo-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--navy); letter-spacing: 1px; line-height: 1.1; transition: color .4s; }
+.logo-title span { color: var(--gold); }
+.logo-tagline { font-family: 'Inter', sans-serif; font-size: .58rem; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--text-light); transition: color .4s; margin-top: 2px; }
+
+/* Nav */
+.nav-list { display: flex; gap: 32px; }
+.nav-link { font-size: .86rem; font-weight: 500; color: var(--text); position: relative; padding: 4px 0; transition: color .3s; }
+.nav-link::after { content: ''; position: absolute; bottom: -4px; left: 50%; width: 0; height: 2px; background: var(--gold); transition: all .3s; transform: translateX(-50%); }
+.nav-link:hover { color: var(--navy); }
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+.header-cta.btn-outline { background: var(--gold); color: #fff; border-color: var(--gold); padding: 10px 24px; font-size: .82rem; }
+.header-cta.btn-outline:hover { background: #b3842e; border-color: #b3842e; transform: translateY(-2px); box-shadow: 0 12px 28px rgba(197,150,62,.3); }
+
+.hamburger { display: none; flex-direction: column; gap: 6px; background: none; border: none; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 26px; height: 2px; background: var(--navy); border-radius: 2px; transition: .3s; }
+
+/* =============================================
+   HERO — KEN BURNS SLIDESHOW
+   ============================================= */
+.hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; }
+
+.hero-slideshow { position: absolute; inset: 0; z-index: 0; }
+.hero-slide {
+  position: absolute; inset: 0;
+  opacity: 0; transition: opacity 1.8s ease-in-out;
+  will-change: opacity;
+}
+.hero-slide.active { opacity: 1; }
+.hero-slide img {
+  width: 100%; height: 100%; object-fit: cover;
+  animation: kenBurns 20s ease-in-out infinite alternate;
+}
+.hero-slide:nth-child(1) img { animation-name: kb1; }
+.hero-slide:nth-child(2) img { animation-name: kb2; }
+.hero-slide:nth-child(3) img { animation-name: kb3; }
+.hero-slide:nth-child(4) img { animation-name: kb4; }
+
+@keyframes kb1 { 0% { transform: scale(1) translate(0,0); } 100% { transform: scale(1.15) translate(-2%,-1%); } }
+@keyframes kb2 { 0% { transform: scale(1.1) translate(-1%,1%); } 100% { transform: scale(1) translate(1%,-1%); } }
+@keyframes kb3 { 0% { transform: scale(1) translate(1%,0); } 100% { transform: scale(1.12) translate(-1%,2%); } }
+@keyframes kb4 { 0% { transform: scale(1.08) translate(0,1%); } 100% { transform: scale(1) translate(0,-1%); } }
+
+.hero-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(160deg, rgba(15,34,54,.92) 0%, rgba(26,53,85,.75) 45%, rgba(26,53,85,.6) 100%);
+}
+
+/* Subtle animated grain */
+.hero-grain {
+  position: absolute; inset: 0; z-index: 2; opacity: .03; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Slide indicators */
+.hero-indicators {
+  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  z-index: 4; display: flex; gap: 10px;
+}
+.hero-dot {
+  width: 32px; height: 3px; border-radius: 3px;
+  background: rgba(255,255,255,.25); cursor: pointer;
+  transition: all .4s; position: relative; overflow: hidden;
+}
+.hero-dot.active { background: rgba(255,255,255,.15); }
+.hero-dot.active::after {
+  content: ''; position: absolute; inset: 0;
+  background: var(--gold); border-radius: 3px;
+  animation: dotProgress 6s linear forwards;
+}
+@keyframes dotProgress { 0% { width: 0; } 100% { width: 100%; } }
+
+.hero-content { position: relative; z-index: 3; max-width: 700px; padding-top: 60px; }
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(197,150,62,.1); border: 1px solid rgba(197,150,62,.25);
+  border-radius: 50px; padding: 8px 22px 8px 14px; margin-bottom: 32px;
+}
+.hero-badge-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.3)} }
+.hero-badge span { font-size: .75rem; font-weight: 600; color: var(--gold-light); letter-spacing: 2px; text-transform: uppercase; }
+
+.hero-title {
+  font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+  color: #fff; margin-bottom: 24px; line-height: 1.08;
+}
+.hero-title .gold {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+.hero-subtitle { font-size: 1.08rem; line-height: 1.85; color: rgba(255,255,255,.65); margin-bottom: 44px; max-width: 540px; font-weight: 400; }
+.hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 72px; }
+
+.hero-stats { display: flex; gap: 52px; padding-top: 44px; border-top: 1px solid rgba(255,255,255,.08); }
+.hero-stat h3 { font-size: 2rem; color: var(--gold); margin-bottom: 4px; font-weight: 700; }
+.hero-stat p { font-size: .72rem; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
+
+/* =============================================
+   SECTIONS
+   ============================================= */
+.section { padding: 120px 0; }
+.section-label {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: 'Inter', sans-serif; font-size: .72rem; font-weight: 700;
+  letter-spacing: 3.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+}
+.section-label::before { content: ''; width: 28px; height: 1.5px; background: var(--gold); }
+.section-title { font-size: clamp(2rem, 3.8vw, 2.7rem); margin-bottom: 18px; }
+.section-desc { font-size: 1rem; color: var(--text-light); max-width: 580px; line-height: 1.85; }
+.section-desc.center { margin-left: auto; margin-right: auto; text-align: center; }
+.section-header { margin-bottom: 64px; }
+.section-header.center { text-align: center; }
+
+/* =============================================
+   SERVICES
+   ============================================= */
+.services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+
+.service-card {
+  background: var(--white); border-radius: var(--radius); overflow: hidden;
+  box-shadow: var(--shadow-sm); border: 1px solid var(--border);
+  transition: var(--transition);
+}
+.service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: transparent; }
+
+.service-card-img { position: relative; height: 240px; overflow: hidden; }
+.service-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.4,0,.2,1); }
+.service-card:hover .service-card-img img { transform: scale(1.06); }
+.service-card-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,34,54,.5) 0%, transparent 50%); }
+.service-card-number {
+  position: absolute; top: 16px; left: 20px; z-index: 2;
+  font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 700;
+  color: rgba(255,255,255,.1); line-height: 1;
+}
+
+.service-card-body { padding: 28px 24px 24px; }
+.service-card-body h3 { font-size: 1.2rem; margin-bottom: 10px; }
+.service-card-body p { font-size: .9rem; color: var(--text-light); margin-bottom: 18px; line-height: 1.75; }
+.card-link { display: inline-flex; align-items: center; gap: 8px; font-size: .84rem; font-weight: 600; color: var(--gold); }
+.card-link:hover { color: var(--navy); gap: 12px; }
+
+/* =============================================
+   ABOUT
+   ============================================= */
+.about-section { background: var(--cream); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+
+.about-images { position: relative; }
+.about-img-main { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg); }
+.about-img-main img { width: 100%; height: 500px; object-fit: cover; }
+
+.about-img-float {
+  position: absolute; bottom: -36px; right: -36px;
+  width: 200px; border-radius: var(--radius); overflow: hidden;
+  border: 5px solid var(--cream); box-shadow: var(--shadow-md);
+}
+.about-img-float img { width: 100%; height: 160px; object-fit: cover; }
+
+.about-badge {
+  position: absolute; top: -16px; left: -16px;
+  background: var(--gold); color: #fff; padding: 20px 24px;
+  border-radius: var(--radius); text-align: center;
+  box-shadow: 0 8px 28px rgba(197,150,62,.35); z-index: 2;
+}
+.about-badge h4 { color: #fff; font-size: 2rem; line-height: 1; margin-bottom: 2px; }
+.about-badge span { font-size: .62rem; text-transform: uppercase; letter-spacing: 2.5px; font-weight: 700; display: block; opacity: .85; }
+
+.about-content p { color: var(--text-light); margin-bottom: 16px; font-size: .95rem; }
+.check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 28px 0 32px; }
+.check-item { display: flex; align-items: center; gap: 10px; font-size: .88rem; font-weight: 500; color: var(--text); }
+.check-icon {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--gold); color: #fff; display: flex;
+  align-items: center; justify-content: center;
+  font-size: .6rem; flex-shrink: 0; font-weight: 700;
+}
+
+/* =============================================
+   WHY CHOOSE US
+   ============================================= */
+.why-section { background: var(--navy); color: #fff; position: relative; overflow: hidden; }
+.why-section::before {
+  content: ''; position: absolute; top: -300px; right: -200px;
+  width: 700px; height: 700px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(197,150,62,.06) 0%, transparent 70%);
+}
+.features-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; }
+.feature-card {
+  text-align: center; padding: 44px 20px; border-radius: var(--radius);
+  background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06);
+  transition: var(--transition);
+}
+.feature-card:hover { background: rgba(255,255,255,.07); transform: translateY(-4px); }
+.feature-icon {
+  width: 68px; height: 68px; margin: 0 auto 24px;
+  border-radius: 14px; background: rgba(212,170,94,.08);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.7rem; transition: var(--transition);
+}
+.feature-card:hover .feature-icon { background: rgba(212,170,94,.15); transform: scale(1.05); }
+.feature-card h3 { color: #fff; font-size: 1.05rem; margin-bottom: 10px; }
+.feature-card p { color: rgba(255,255,255,.45); font-size: .86rem; line-height: 1.75; }
+
+/* =============================================
+   PROCESS
+   ============================================= */
+.process-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; position: relative; }
+.process-grid::before {
+  content: ''; position: absolute; top: 44px; left: 13%; right: 13%;
+  height: 1.5px; background: linear-gradient(90deg, transparent, var(--gold-pale), var(--gold), var(--gold-pale), transparent);
+  opacity: .4;
+}
+.process-step { text-align: center; position: relative; z-index: 1; }
+.process-num {
+  width: 52px; height: 52px; margin: 0 auto 20px; border-radius: 50%;
+  background: var(--white); border: 2px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700;
+  color: var(--gold); transition: var(--transition);
+}
+.process-step:hover .process-num { background: var(--gold); color: #fff; box-shadow: 0 6px 20px rgba(197,150,62,.3); }
+.process-step h3 { font-size: 1.05rem; margin-bottom: 8px; }
+.process-step p { font-size: .86rem; color: var(--text-light); line-height: 1.7; }
+
+/* =============================================
+   GALLERY — Masonry
+   ============================================= */
+.gallery-section { background: var(--cream); }
+.gallery-grid {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  grid-template-rows: 240px 240px; gap: 14px;
+}
+.gallery-item { border-radius: var(--radius); overflow: hidden; position: relative; cursor: pointer; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.4,0,.2,1); }
+.gallery-item:hover img { transform: scale(1.06); }
+.gallery-item::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(15,34,54,.7) 0%, transparent 50%);
+  opacity: 0; transition: opacity .4s;
+}
+.gallery-item:hover::after { opacity: 1; }
+.gallery-item span {
+  position: absolute; bottom: 18px; left: 18px;
+  color: #fff; font-weight: 600; font-size: .84rem;
+  z-index: 2; opacity: 0; transform: translateY(8px); transition: all .4s;
+}
+.gallery-item:hover span { opacity: 1; transform: translateY(0); }
+.gallery-item.wide { grid-column: span 2; }
+
+/* =============================================
+   TESTIMONIALS
+   ============================================= */
+.testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.testimonial-card {
+  background: var(--white); padding: 36px 28px; border-radius: var(--radius);
+  border: 1px solid var(--border); transition: var(--transition);
+  position: relative;
+}
+.testimonial-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); border-color: transparent; }
+.testimonial-card::before {
+  content: '\201C'; position: absolute; top: 16px; right: 24px;
+  font-family: 'Playfair Display', serif; font-size: 5rem;
+  color: var(--gold); opacity: .08; line-height: 1;
+}
+.testimonial-stars { color: var(--gold); font-size: .82rem; margin-bottom: 14px; letter-spacing: 2px; }
+.testimonial-card blockquote { font-size: .92rem; color: var(--text-light); font-style: italic; line-height: 1.85; margin-bottom: 24px; }
+.testimonial-author { display: flex; align-items: center; gap: 12px; }
+.author-avatar {
+  width: 44px; height: 44px; border-radius: 50%; background: var(--navy);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold-light); font-weight: 700; font-size: .8rem;
+}
+.author-info h4 { font-size: .88rem; margin-bottom: 1px; }
+.author-info span { font-size: .74rem; color: var(--text-light); }
+
+/* =============================================
+   CTA BANNER
+   ============================================= */
+.cta-banner {
+  background: linear-gradient(135deg, var(--gold) 0%, #d4aa5e 50%, var(--gold) 100%);
+  background-size: 200% 200%; animation: shimmer 8s ease infinite;
+  padding: 100px 0; text-align: center; color: #fff; position: relative; overflow: hidden;
+}
+@keyframes shimmer { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+.cta-banner::before {
+  content: ''; position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.cta-banner h2 { color: #fff; font-size: clamp(1.8rem, 3.5vw, 2.5rem); margin-bottom: 14px; position: relative; }
+.cta-banner p { font-size: 1rem; opacity: .88; margin-bottom: 36px; max-width: 500px; margin-left: auto; margin-right: auto; position: relative; }
+
+/* =============================================
+   CONTACT
+   ============================================= */
+.contact-section { background: var(--cream); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: start; }
+.contact-info-item { display: flex; gap: 16px; margin-bottom: 32px; }
+.ci-icon {
+  width: 50px; height: 50px; min-width: 50px; border-radius: 12px;
+  background: rgba(197,150,62,.08); display: flex; align-items: center;
+  justify-content: center; color: var(--gold); flex-shrink: 0;
+}
+.contact-info-item h4 { font-size: .95rem; margin-bottom: 3px; }
+.contact-info-item p { font-size: .88rem; color: var(--text-light); }
+
+.contact-form {
+  background: var(--white); padding: 44px; border-radius: 14px;
+  box-shadow: var(--shadow-md); border: 1px solid var(--border);
+}
+.contact-form h3 { margin-bottom: 6px; font-size: 1.4rem; }
+.contact-form > p { font-size: .88rem; color: var(--text-light); margin-bottom: 28px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.form-group { margin-bottom: 14px; }
+.form-group label { display: block; font-size: .8rem; font-weight: 600; color: var(--text); margin-bottom: 7px; }
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%; padding: 13px 16px; border: 1.5px solid var(--border);
+  border-radius: 8px; font-family: 'Inter', sans-serif; font-size: .88rem;
+  color: var(--text); transition: var(--transition); background: var(--cream);
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  outline: none; border-color: var(--gold); background: var(--white);
+  box-shadow: 0 0 0 4px rgba(197,150,62,.06);
+}
+.form-group textarea { resize: vertical; min-height: 120px; }
+
+/* =============================================
+   FOOTER
+   ============================================= */
+.site-footer { background: var(--navy-dark); color: rgba(255,255,255,.55); padding: 80px 0 0; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.4fr; gap: 44px; padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,.05); }
+.footer-about p { font-size: .86rem; margin-top: 16px; line-height: 1.85; }
+.footer-heading { color: #fff; font-family: 'Inter', sans-serif; font-size: .76rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 22px; }
+.footer-links li { margin-bottom: 11px; }
+.footer-links li a { font-size: .86rem; color: rgba(255,255,255,.4); }
+.footer-links li a:hover { color: var(--gold-light); padding-left: 4px; }
+
+.newsletter-form { display: flex; gap: 8px; }
+.newsletter-form input {
+  flex: 1; padding: 12px 14px; border: 1px solid rgba(255,255,255,.1);
+  border-radius: 6px; background: rgba(255,255,255,.03); color: #fff;
+  font-size: .86rem; font-family: 'Inter', sans-serif;
+}
+.newsletter-form input::placeholder { color: rgba(255,255,255,.25); }
+.newsletter-form button {
+  padding: 12px 18px; background: var(--gold); color: #fff; border: none;
+  border-radius: 6px; font-weight: 600; font-size: .8rem; cursor: pointer; transition: background .3s;
+}
+.newsletter-form button:hover { background: #b3842e; }
+
+.footer-bottom {
+  padding: 22px 0; display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 12px;
+  font-size: .76rem; color: rgba(255,255,255,.25);
+}
+.footer-social { display: flex; gap: 8px; }
+.footer-social a {
+  width: 34px; height: 34px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.08);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,.35); font-size: .78rem; transition: var(--transition);
+}
+.footer-social a:hover { background: var(--gold); border-color: var(--gold); color: #fff; }
+
+/* =============================================
+   ANIMATIONS
+   ============================================= */
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity .7s cubic-bezier(.4,0,.2,1), transform .7s cubic-bezier(.4,0,.2,1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: .08s; }
+.reveal-d2 { transition-delay: .16s; }
+.reveal-d3 { transition-delay: .24s; }
+.reveal-d4 { transition-delay: .32s; }
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 1024px) {
+  .services-grid, .testimonials-grid { grid-template-columns: 1fr 1fr; }
+  .features-grid, .process-grid { grid-template-columns: 1fr 1fr; }
+  .process-grid::before { display: none; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .gallery-item.wide { grid-column: span 1; }
+  .about-grid { gap: 48px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .top-bar { display: none; }
+  .hamburger { display: flex; }
+  .nav-list, .header-cta { display: none; }
+  .services-grid, .features-grid, .testimonials-grid, .process-grid { grid-template-columns: 1fr; }
+  .about-grid, .contact-grid { grid-template-columns: 1fr; }
+  .about-img-float { display: none; }
+  .about-badge { position: relative; top: auto; left: auto; display: inline-block; margin-bottom: 20px; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; }
+  .hero-stats { flex-wrap: wrap; gap: 20px; }
+  .section { padding: 80px 0; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .check-grid { grid-template-columns: 1fr; }
+  .hero-title { font-size: 2.2rem; }
+}
+@media (max-width: 480px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+  .newsletter-form { flex-direction: column; }
+}
+</style>
 </head>
 <body>
 
-  <!-- Top Bar -->
-  <div class="top-bar">
-    <div class="container top-bar-inner">
-      <div class="top-bar-left">
-        <a href="tel:+441234567890" class="top-bar-link">&#9742; 01234 567 890</a>
-        <a href="mailto:info@inhousecatering.co.uk" class="top-bar-link">&#9993; info@inhousecatering.co.uk</a>
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="container">
+    <div class="top-bar-left">
+      <a href="tel:02079460958"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> 020 7946 0958</a>
+      <a href="mailto:hello@inhousecatering.co.uk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> hello@inhousecatering.co.uk</a>
+    </div>
+    <div class="top-bar-right">Private Catering & Operational Consulting</div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <div class="header-inner">
+      <a href="#home" class="logo">
+        <!-- SVG Logo matching the brand -->
+        <svg class="logo-img" viewBox="0 0 52 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- House outline -->
+          <path d="M26 2L4 20V54H48V20L26 2Z" stroke="currentColor" stroke-width="2.5" fill="none" class="logo-house"/>
+          <!-- Roof peak -->
+          <path d="M1 22L26 1L51 22" stroke="currentColor" stroke-width="2.5" fill="none" class="logo-house"/>
+          <!-- Cloche dome -->
+          <ellipse cx="26" cy="34" rx="12" ry="8" fill="#c5963e" opacity=".85"/>
+          <rect x="14" y="37" width="24" height="2" rx="1" fill="#c5963e"/>
+          <!-- Cloche handle -->
+          <circle cx="26" cy="28" r="2.5" fill="#c5963e"/>
+          <!-- Fork -->
+          <path d="M16 22V32M14 22V26M18 22V26" stroke="#c5963e" stroke-width="1.2" stroke-linecap="round"/>
+          <!-- Knife -->
+          <path d="M36 22V32M36 22C38 22 38 26 36 26" stroke="#c5963e" stroke-width="1.2" stroke-linecap="round"/>
+          <!-- Chef hat -->
+          <path d="M23 16C23 13 29 13 29 16V19H23V16Z" fill="#c5963e" opacity=".7"/>
+          <rect x="22" y="18.5" width="8" height="1.5" rx=".75" fill="#c5963e" opacity=".7"/>
+          <!-- Gear -->
+          <circle cx="20" cy="44" r="4" stroke="#c5963e" stroke-width="1.2" fill="none"/>
+          <circle cx="20" cy="44" r="1.5" fill="#c5963e"/>
+          <!-- Arrow up -->
+          <path d="M36 48L36 40M36 40L32 44M36 40L40 44" stroke="#c5963e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="logo-mark">
+          <div class="logo-title">IN<span>-</span>HOUSE</div>
+          <div class="logo-tagline">Catering Solutions</div>
+        </div>
+      </a>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#gallery" class="nav-link">Gallery</a></li>
+          <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="#contact" class="btn btn-outline btn-sm header-cta">Get a Quote</a>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO — KEN BURNS SLIDESHOW -->
+<section class="hero" id="home">
+  <div class="hero-slideshow" id="heroSlideshow">
+    <div class="hero-slide active">
+      <img src="https://images.unsplash.com/photo-1555244162-803834f70033?w=1920&q=80" alt="Elegant banquet table">
+    </div>
+    <div class="hero-slide">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=80" alt="Fine dining plating">
+    </div>
+    <div class="hero-slide">
+      <img src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?w=1920&q=80" alt="Professional chef at work">
+    </div>
+    <div class="hero-slide">
+      <img src="https://images.unsplash.com/photo-1530062845289-9109b2c9c868?w=1920&q=80" alt="Wedding reception catering">
+    </div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grain"></div>
+
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge reveal">
+        <div class="hero-badge-dot"></div>
+        <span>Now Accepting Bookings for 2026</span>
       </div>
-      <div class="top-bar-right">
-        <span>Private Catering &amp; Operational Consulting</span>
+      <h1 class="hero-title reveal">Exceptional Catering,<br><span class="gold">Delivered to Your Door</span></h1>
+      <p class="hero-subtitle reveal">We provide bespoke catering solutions tailored to schools, corporate events, private functions and establishments. From menu design to full service management, we bring quality and consistency to every plate.</p>
+      <div class="hero-buttons reveal">
+        <a href="#services" class="btn btn-primary">Explore Our Services <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      </div>
+      <div class="hero-stats reveal">
+        <div class="hero-stat"><h3>500+</h3><p>Events Catered</p></div>
+        <div class="hero-stat"><h3>15+</h3><p>Years Experience</p></div>
+        <div class="hero-stat"><h3>50+</h3><p>Partner Schools</p></div>
+        <div class="hero-stat"><h3>98%</h3><p>Satisfaction Rate</p></div>
       </div>
     </div>
   </div>
 
-  <!-- Sticky Header -->
-  <header class="site-header" id="siteHeader">
-    <div class="container header-inner">
-      <a href="index.html" class="logo">
-        <span class="logo-main">IN-HOUSE</span><span class="logo-sep">|</span><span class="logo-sub">Catering Solutions</span>
-      </a>
-      <nav class="main-nav" id="mainNav">
-        <ul class="nav-list">
-          <li><a href="index.html" class="nav-link active">Home</a></li>
-          <li><a href="about.html" class="nav-link">About</a></li>
-          <li><a href="services.html" class="nav-link">Services</a></li>
-          <li><a href="gallery.html" class="nav-link">Gallery</a></li>
-          <li><a href="contact.html" class="nav-link">Contact</a></li>
-        </ul>
-      </nav>
-      <a href="contact.html" class="btn btn-primary header-cta">Get a Quote</a>
-      <button class="hamburger" id="hamburger" aria-label="Open menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-  </header>
+  <div class="hero-indicators" id="heroIndicators">
+    <div class="hero-dot active" data-index="0"></div>
+    <div class="hero-dot" data-index="1"></div>
+    <div class="hero-dot" data-index="2"></div>
+    <div class="hero-dot" data-index="3"></div>
+  </div>
+</section>
 
-  <!-- Hero Section -->
-  <section class="hero" style="background-image: url('https://images.unsplash.com/photo-1555244162-803834f70033?w=1600');">
-    <div class="hero-overlay"></div>
-    <div class="container hero-content">
-      <h1 class="hero-title fade-up">Exceptional Catering,<br>Delivered to Your Door</h1>
-      <p class="hero-subtitle fade-up">We provide bespoke catering solutions tailored to schools, corporate events, private functions and establishments. From menu design to full service management, we bring quality and consistency to every plate.</p>
-      <div class="hero-buttons fade-up">
-        <a href="services.html" class="btn btn-primary">Our Services</a>
-        <a href="contact.html" class="btn btn-outline">Get in Touch</a>
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Our Core Services</h2>
+      <p class="section-desc center">From large scale event catering to daily school meal programmes, we deliver excellence across every service we offer.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal reveal-d1">
+        <div class="service-card-img">
+          <img src="https://images.unsplash.com/photo-1530062845289-9109b2c9c868?w=600&q=80" alt="Event catering" loading="lazy">
+          <div class="service-card-number">01</div>
+        </div>
+        <div class="service-card-body">
+          <h3>Event Catering</h3>
+          <p>From corporate functions to celebratory gatherings, we create memorable dining experiences with menus crafted to suit your occasion and dietary requirements.</p>
+          <a href="#contact" class="card-link">Learn More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Stats Bar -->
-  <section class="stats-bar">
-    <div class="container">
-      <div class="stats-grid">
-        <div class="stat-item fade-up">
-          <span class="stat-num" data-target="500">0</span><span class="stat-suffix">+</span>
-          <span class="stat-label">Events Catered</span>
+      <div class="service-card reveal reveal-d2">
+        <div class="service-card-img">
+          <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=600&q=80" alt="School catering" loading="lazy">
+          <div class="service-card-number">02</div>
         </div>
-        <div class="stat-item fade-up">
-          <span class="stat-num" data-target="15">0</span><span class="stat-suffix">+</span>
-          <span class="stat-label">Years Experience</span>
+        <div class="service-card-body">
+          <h3>School Catering</h3>
+          <p>Nutritious, delicious meals that pupils actually enjoy. We work with academies and schools to deliver compliant programmes that promote healthy eating.</p>
+          <a href="#contact" class="card-link">Learn More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
-        <div class="stat-item fade-up">
-          <span class="stat-num" data-target="50">0</span><span class="stat-suffix">+</span>
-          <span class="stat-label">Partner Schools</span>
+      </div>
+      <div class="service-card reveal reveal-d3">
+        <div class="service-card-img">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80" alt="Consulting" loading="lazy">
+          <div class="service-card-number">03</div>
         </div>
-        <div class="stat-item fade-up">
-          <span class="stat-num" data-target="98">0</span><span class="stat-suffix">%</span>
-          <span class="stat-label">Client Satisfaction</span>
+        <div class="service-card-body">
+          <h3>Operational Consulting</h3>
+          <p>We help organisations streamline catering operations, reduce costs and improve quality through expert audits, training and strategic planning.</p>
+          <a href="#contact" class="card-link">Learn More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Services Overview -->
-  <section class="section-pad" id="services">
-    <div class="container">
-      <div class="section-header text-center fade-up">
-        <span class="section-label">What We Do</span>
-        <h2 class="section-title">Our Core Services</h2>
-        <p class="section-subtitle">From large scale event catering to daily school meal programmes, we deliver excellence across every service we offer.</p>
+<!-- ABOUT -->
+<section class="section about-section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-images reveal">
+        <div class="about-badge"><h4>15+</h4><span>Years of Excellence</span></div>
+        <div class="about-img-main"><img src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?w=800&q=80" alt="Chef at work"></div>
+        <div class="about-img-float"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=80" alt="Plated dish"></div>
       </div>
-      <div class="services-grid">
-        <div class="service-card fade-up">
-          <div class="service-card-img">
-            <img src="https://images.unsplash.com/photo-1530062845289-9109b2c9c868?w=600" alt="Event catering with beautifully presented food" loading="lazy">
-          </div>
-          <div class="service-card-body">
-            <h3>Event Catering</h3>
-            <p>From corporate functions to celebratory gatherings, we create memorable dining experiences with menus crafted to suit your occasion, guest count and dietary requirements.</p>
-            <a href="services.html" class="link-arrow">Learn More &rarr;</a>
-          </div>
+      <div class="about-content reveal">
+        <div class="section-label">Who We Are</div>
+        <h2 class="section-title">Passionate About Quality Catering</h2>
+        <p>In-House Catering Solutions was founded with a clear mission: to bring restaurant quality food and professional operations management to schools, events and establishments across the country.</p>
+        <p>With over fifteen years of industry experience, our team combines culinary expertise with operational know how to deliver results that consistently exceed expectations.</p>
+        <div class="check-grid">
+          <div class="check-item"><div class="check-icon">&#10003;</div> Bespoke Menu Design</div>
+          <div class="check-item"><div class="check-icon">&#10003;</div> Nutritional Compliance</div>
+          <div class="check-item"><div class="check-icon">&#10003;</div> Full Service Management</div>
+          <div class="check-item"><div class="check-icon">&#10003;</div> Cost Optimisation</div>
+          <div class="check-item"><div class="check-icon">&#10003;</div> Staff Training</div>
+          <div class="check-item"><div class="check-icon">&#10003;</div> Health & Safety Audits</div>
         </div>
-        <div class="service-card fade-up">
-          <div class="service-card-img">
-            <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=600" alt="Fresh ingredients for school catering" loading="lazy">
-          </div>
-          <div class="service-card-body">
-            <h3>School Catering</h3>
-            <p>Nutritious, delicious meals that pupils actually enjoy. We work with academies and schools to deliver compliant meal programmes that promote healthy eating habits.</p>
-            <a href="services.html" class="link-arrow">Learn More &rarr;</a>
-          </div>
-        </div>
-        <div class="service-card fade-up">
-          <div class="service-card-img">
-            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600" alt="Operational consulting meeting" loading="lazy">
-          </div>
-          <div class="service-card-body">
-            <h3>Operational Consulting</h3>
-            <p>We help organisations streamline their catering operations, reduce costs and improve service quality through expert audits, training and strategic planning.</p>
-            <a href="services.html" class="link-arrow">Learn More &rarr;</a>
-          </div>
-        </div>
+        <a href="#contact" class="btn btn-navy">Learn More About Us</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- About Preview -->
-  <section class="section-pad bg-cream" id="about">
-    <div class="container">
-      <div class="two-col">
-        <div class="two-col-img fade-up">
-          <img src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?w=800" alt="Professional chef preparing a gourmet dish" loading="lazy">
-          <div class="img-badge">15+ Years</div>
-        </div>
-        <div class="two-col-content fade-up">
-          <span class="section-label">Who We Are</span>
-          <h2 class="section-title">Passionate About Quality Catering</h2>
-          <p>In-House Catering Solutions was founded with a simple mission: to bring restaurant quality food and professional operations management to schools, events and establishments across the country. With over fifteen years of industry experience, our team combines culinary expertise with operational know how to deliver results that exceed expectations.</p>
-          <div class="features-checklist">
-            <div class="check-item">&#10003; Bespoke Menu Design</div>
-            <div class="check-item">&#10003; Nutritional Compliance</div>
-            <div class="check-item">&#10003; Full Service Management</div>
-            <div class="check-item">&#10003; Cost Optimisation</div>
-            <div class="check-item">&#10003; Staff Training</div>
-            <div class="check-item">&#10003; Health &amp; Safety Audits</div>
-          </div>
-          <a href="about.html" class="btn btn-primary">About Us</a>
-        </div>
+<!-- WHY CHOOSE US -->
+<section class="section why-section">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-label" style="color:var(--gold-light)">Why Choose Us</div>
+      <h2 class="section-title" style="color:#fff">What Sets Us Apart</h2>
+      <p class="section-desc center" style="color:rgba(255,255,255,.45)">We go beyond simply providing food. We build lasting partnerships rooted in quality, transparency and genuine care.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal reveal-d1"><div class="feature-icon">&#127860;</div><h3>Tailored Solutions</h3><p>Every client is unique. We design menus, workflows and service plans around your needs, preferences and budget.</p></div>
+      <div class="feature-card reveal reveal-d2"><div class="feature-icon">&#127807;</div><h3>Quality Ingredients</h3><p>We source fresh, seasonal produce from trusted local suppliers. Quality on the plate starts in the kitchen.</p></div>
+      <div class="feature-card reveal reveal-d3"><div class="feature-icon">&#128101;</div><h3>Experienced Team</h3><p>Our chefs, managers and consultants bring decades of combined experience across hospitality and education.</p></div>
+      <div class="feature-card reveal reveal-d4"><div class="feature-icon">&#128200;</div><h3>Transparent Pricing</h3><p>No hidden costs. Clear, detailed proposals so you always know exactly what you are paying for.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Our Process</h2>
+      <p class="section-desc center">From initial consultation to ongoing review, we make every step seamless and transparent.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-step reveal reveal-d1"><div class="process-num">01</div><h3>Consultation</h3><p>We start by understanding your needs, venue, audience and goals through a thorough consultation.</p></div>
+      <div class="process-step reveal reveal-d2"><div class="process-num">02</div><h3>Planning</h3><p>Our team designs bespoke menus, service plans and operational frameworks tailored to you.</p></div>
+      <div class="process-step reveal reveal-d3"><div class="process-num">03</div><h3>Execution</h3><p>We deliver with precision: trained staff, premium ingredients, and meticulous attention to detail.</p></div>
+      <div class="process-step reveal reveal-d4"><div class="process-num">04</div><h3>Review</h3><p>Post delivery, we gather feedback and refine our approach for continuous improvement.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section gallery-section" id="gallery">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-label">Our Work</div>
+      <h2 class="section-title">A Taste of What We Do</h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item wide reveal"><img src="https://images.unsplash.com/photo-1555244162-803834f70033?w=800&q=80" alt="Gala dinner" loading="lazy"><span>Corporate Gala Dinner</span></div>
+      <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&q=80" alt="Fine dining" loading="lazy"><span>Fine Dining</span></div>
+      <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=500&q=80" alt="Breakfast" loading="lazy"><span>Breakfast Buffet</span></div>
+      <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&q=80" alt="Seasonal" loading="lazy"><span>Seasonal Menu</span></div>
+      <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=500&q=80" alt="Canapes" loading="lazy"><span>Canape Selection</span></div>
+      <div class="gallery-item wide reveal"><img src="https://images.unsplash.com/photo-1530062845289-9109b2c9c868?w=800&q=80" alt="Wedding" loading="lazy"><span>Wedding Reception</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" id="testimonials">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-label">Testimonials</div>
+      <h2 class="section-title">What Our Clients Say</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal reveal-d1">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>In-House Catering completely transformed our school meal programme. The students love the food, parents are delighted, and our uptake has increased by over 40 percent. Their team is professional and genuinely passionate.</blockquote>
+        <div class="testimonial-author"><div class="author-avatar">SM</div><div class="author-info"><h4>Sarah Mitchell</h4><span>Academy Principal, Greenfield Academy</span></div></div>
+      </div>
+      <div class="testimonial-card reveal reveal-d2">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>We have used In-House for our annual corporate gala three years running and the quality has been outstanding every time. Their attention to detail, from canapes to the main service, is second to none.</blockquote>
+        <div class="testimonial-author"><div class="author-avatar">JH</div><div class="author-info"><h4>James Hartford</h4><span>Events Director, Clearwater Corp</span></div></div>
+      </div>
+      <div class="testimonial-card reveal reveal-d3">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>The operational consulting service was a game changer. They identified inefficiencies we had overlooked for years, reduced our costs by 22 percent and improved both staff morale and food quality across the board.</blockquote>
+        <div class="testimonial-author"><div class="author-avatar">ER</div><div class="author-info"><h4>Emma Richardson</h4><span>Operations Manager, Hartwell Events</span></div></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Why Choose Us -->
-  <section class="section-pad bg-navy" id="why-us">
-    <div class="container">
-      <div class="section-header text-center fade-up">
-        <span class="section-label section-label-light">Why Choose Us</span>
-        <h2 class="section-title text-white">What Sets Us Apart</h2>
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <h2 class="reveal">Ready to Transform Your Catering?</h2>
+    <p class="reveal">Whether you need a one off event or a long term partnership, let us create something extraordinary together.</p>
+    <a href="#contact" class="btn btn-white reveal">Start a Conversation <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact-section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="section-label">Get in Touch</div>
+        <h2 class="section-title">Let Us Hear<br>From You</h2>
+        <p style="color:var(--text-light); margin-bottom:36px; font-size:.95rem;">Whether you have a specific event in mind or simply want to explore what we can offer, our team is here to help.</p>
+        <div class="contact-info-item">
+          <div class="ci-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 11.042 11.042 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 11.042 11.042 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div><h4>Phone</h4><p>020 7946 0958</p></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="ci-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><h4>Email</h4><p>hello@inhousecatering.co.uk</p></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="ci-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><h4>Address</h4><p>45 Kingsway, London, WC2B 6TD</p></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="ci-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div><h4>Opening Hours</h4><p>Monday to Friday, 8:00 AM to 6:00 PM</p></div>
+        </div>
       </div>
-      <div class="features-grid">
-        <div class="feature-box fade-up">
-          <div class="feature-icon">&#127919;</div>
-          <h3>Tailored Solutions</h3>
-          <p>Every client is unique. We design our services around your specific needs, preferences and budget to ensure a perfect fit.</p>
-        </div>
-        <div class="feature-box fade-up">
-          <div class="feature-icon">&#127807;</div>
-          <h3>Quality Ingredients</h3>
-          <p>We source fresh, locally produced ingredients wherever possible, ensuring every dish is packed with flavour and nutrition.</p>
-        </div>
-        <div class="feature-box fade-up">
-          <div class="feature-icon">&#128101;</div>
-          <h3>Experienced Team</h3>
-          <p>Our chefs, managers and consultants bring decades of combined experience across education, hospitality and corporate catering.</p>
-        </div>
-        <div class="feature-box fade-up">
-          <div class="feature-icon">&#128176;</div>
-          <h3>Transparent Pricing</h3>
-          <p>No hidden costs or surprises. We provide clear, detailed proposals so you know exactly what you are investing in.</p>
-        </div>
+      <div class="contact-form reveal">
+        <h3>Send Us an Enquiry</h3>
+        <p>Fill in the form below and we will get back to you within 24 hours.</p>
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-group"><label>First Name</label><input type="text" placeholder="Your first name" required></div>
+            <div class="form-group"><label>Last Name</label><input type="text" placeholder="Your last name" required></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Email</label><input type="email" placeholder="you@example.com" required></div>
+            <div class="form-group"><label>Phone</label><input type="tel" placeholder="07xxx xxx xxx"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Event Type</label><select required><option value="" disabled selected>Select a service</option><option>Corporate Event</option><option>School Catering</option><option>Private Function</option><option>Operational Consulting</option><option>Other</option></select></div>
+            <div class="form-group"><label>Guest Count</label><select><option value="" disabled selected>Estimated guests</option><option>Under 50</option><option>50 to 100</option><option>100 to 250</option><option>250 to 500</option><option>500+</option></select></div>
+          </div>
+          <div class="form-group"><label>Message</label><textarea placeholder="Tell us about your event or requirements..."></textarea></div>
+          <button type="submit" class="btn btn-primary" style="width:100%;">Send Enquiry <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></button>
+        </form>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Process Steps -->
-  <section class="section-pad" id="process">
-    <div class="container">
-      <div class="section-header text-center fade-up">
-        <span class="section-label">How It Works</span>
-        <h2 class="section-title">Our Simple Process</h2>
-        <p class="section-subtitle">Getting started with In-House Catering Solutions is straightforward. We guide you through every step.</p>
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#" class="logo" style="margin-bottom:12px; display:inline-flex;">
+          <svg style="height:36px;width:auto;color:#fff" viewBox="0 0 52 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M26 2L4 20V54H48V20L26 2Z" stroke="currentColor" stroke-width="2.5" fill="none"/>
+            <path d="M1 22L26 1L51 22" stroke="currentColor" stroke-width="2.5" fill="none"/>
+            <ellipse cx="26" cy="34" rx="12" ry="8" fill="#c5963e" opacity=".85"/>
+            <rect x="14" y="37" width="24" height="2" rx="1" fill="#c5963e"/>
+            <circle cx="26" cy="28" r="2.5" fill="#c5963e"/>
+          </svg>
+          <div class="logo-mark">
+            <div class="logo-title" style="color:#fff;font-size:1rem;">IN<span>-</span>HOUSE</div>
+            <div class="logo-tagline" style="font-size:.52rem;">Catering Solutions</div>
+          </div>
+        </a>
+        <p class="footer-about">Providing exceptional private catering and operational consulting services to schools, corporate clients, events and establishments across the United Kingdom.</p>
       </div>
-      <div class="process-grid">
-        <div class="process-step fade-up">
-          <div class="process-num">01</div>
-          <h3>Consultation</h3>
-          <p>We begin with an in depth conversation to understand your requirements, challenges and goals. This helps us tailor our approach from the outset.</p>
-        </div>
-        <div class="process-step fade-up">
-          <div class="process-num">02</div>
-          <h3>Planning</h3>
-          <p>Our team develops a comprehensive proposal covering menus, logistics, staffing and timelines, all designed around your specific needs.</p>
-        </div>
-        <div class="process-step fade-up">
-          <div class="process-num">03</div>
-          <h3>Execution</h3>
-          <p>We deliver on every detail with precision and care, ensuring seamless service from the kitchen to the table.</p>
-        </div>
-        <div class="process-step fade-up">
-          <div class="process-num">04</div>
-          <h3>Review</h3>
-          <p>We gather feedback, analyse performance and continuously refine our service to ensure ongoing satisfaction and improvement.</p>
-        </div>
+      <div>
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul class="footer-links"><li><a href="#home">Home</a></li><li><a href="#services">Services</a></li><li><a href="#about">About Us</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#contact">Contact</a></li></ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Services</h4>
+        <ul class="footer-links"><li><a href="#services">Event Catering</a></li><li><a href="#services">School Catering</a></li><li><a href="#services">Consulting</a></li><li><a href="#services">Private Functions</a></li><li><a href="#services">Menu Design</a></li></ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Newsletter</h4>
+        <p style="font-size:.86rem; margin-bottom:14px;">Stay up to date with seasonal menus and industry insights.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault()"><input type="email" placeholder="Your email address"><button type="submit">Subscribe</button></form>
       </div>
     </div>
-  </section>
-
-  <!-- Testimonials -->
-  <section class="section-pad bg-cream" id="testimonials">
-    <div class="container">
-      <div class="section-header text-center fade-up">
-        <span class="section-label">Testimonials</span>
-        <h2 class="section-title">What Our Clients Say</h2>
-      </div>
-      <div class="testimonials-grid">
-        <div class="testimonial-card fade-up">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <blockquote class="testimonial-quote">"In-House Catering Solutions completely transformed our school meal programme. The children genuinely look forward to lunch now, and the feedback from parents has been overwhelmingly positive. Their team is professional, responsive and truly understands the education sector."</blockquote>
-          <div class="testimonial-author">
-            <div class="testimonial-info">
-              <strong>Sarah Mitchell</strong>
-              <span>Academy Principal</span>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card fade-up">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <blockquote class="testimonial-quote">"We have used In-House for several large corporate events and they never disappoint. The food presentation is outstanding, the service is impeccable and they handle every logistical detail so we can focus on our guests. A truly first class operation."</blockquote>
-          <div class="testimonial-author">
-            <div class="testimonial-info">
-              <strong>James Hartford</strong>
-              <span>Events Director</span>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card fade-up">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <blockquote class="testimonial-quote">"Their operational consulting service helped us cut food waste by thirty percent and improve our kitchen efficiency dramatically. The team provided practical, actionable recommendations and supported us through every stage of implementation."</blockquote>
-          <div class="testimonial-author">
-            <div class="testimonial-info">
-              <strong>Emma Richardson</strong>
-              <span>Operations Manager</span>
-            </div>
-          </div>
-        </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 In-House Catering Solutions. All rights reserved.</span>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="Instagram">in</a>
+        <a href="#" aria-label="LinkedIn">Li</a>
+        <a href="#" aria-label="Twitter">X</a>
       </div>
     </div>
-  </section>
+  </div>
+</footer>
 
-  <!-- CTA Banner -->
-  <section class="cta-banner">
-    <div class="container text-center">
-      <h2 class="cta-title fade-up">Ready to Transform Your Catering?</h2>
-      <p class="cta-subtitle fade-up">Get in touch today to discuss how we can deliver exceptional catering solutions tailored to your needs.</p>
-      <a href="contact.html" class="btn btn-white fade-up">Get a Free Quote</a>
-    </div>
-  </section>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <div class="footer-logo">
-            <span class="logo-main">IN-HOUSE</span><span class="logo-sep">|</span><span class="logo-sub">Catering Solutions</span>
-          </div>
-          <p class="footer-about">Providing bespoke private catering and operational consulting services to schools, corporate clients and establishments across the United Kingdom.</p>
-          <div class="footer-social">
-            <a href="#" aria-label="Facebook" class="social-link">f</a>
-            <a href="#" aria-label="Twitter" class="social-link">t</a>
-            <a href="#" aria-label="Instagram" class="social-link">in</a>
-            <a href="#" aria-label="LinkedIn" class="social-link">li</a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h4 class="footer-heading">Quick Links</h4>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4 class="footer-heading">Services</h4>
-          <ul class="footer-links">
-            <li><a href="services.html">Event Catering</a></li>
-            <li><a href="services.html">School Catering</a></li>
-            <li><a href="services.html">Operational Consulting</a></li>
-            <li><a href="services.html">Menu Design</a></li>
-            <li><a href="services.html">Staff Training</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4 class="footer-heading">Newsletter</h4>
-          <p>Subscribe to receive the latest news, insights and updates from our team.</p>
-          <form class="newsletter-form" action="#" method="post">
-            <input type="email" placeholder="Your email address" class="newsletter-input" required>
-            <button type="submit" class="btn btn-primary newsletter-btn">Subscribe</button>
-          </form>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 In-House Catering Solutions. All rights reserved.</p>
-        <div class="footer-bottom-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  /* --- Header scroll --- */
+  const header = document.getElementById('siteHeader');
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 50);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
-  <script src="script.js"></script>
+  /* Logo always navy on white header — no scroll swap needed */
+
+  /* --- Ken Burns Hero Slideshow --- */
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.hero-dot');
+  let current = 0;
+  const INTERVAL = 6000;
+
+  function goToSlide(index) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = index;
+    slides[current].classList.add('active');
+    dots[current].classList.remove('active');
+    // Force reflow to restart dot animation
+    void dots[current].offsetWidth;
+    dots[current].classList.add('active');
+  }
+
+  let timer = setInterval(() => goToSlide((current + 1) % slides.length), INTERVAL);
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      clearInterval(timer);
+      goToSlide(parseInt(dot.dataset.index));
+      timer = setInterval(() => goToSlide((current + 1) % slides.length), INTERVAL);
+    });
+  });
+
+  /* --- Reveal on scroll --- */
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => obs.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add('visible'));
+  }
+
+  /* --- Smooth scroll --- */
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+
+  /* --- Active nav on scroll --- */
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY + 200;
+    sections.forEach(sec => {
+      const link = document.querySelector(`.nav-link[href="#${sec.id}"]`);
+      if (link) link.classList.toggle('active', y >= sec.offsetTop && y < sec.offsetTop + sec.offsetHeight);
+    });
+  }, { passive: true });
+
+  /* --- Mobile nav --- */
+  const hamburger = document.querySelector('.hamburger');
+  const navList = document.querySelector('.nav-list');
+  if (hamburger) {
+    hamburger.addEventListener('click', () => {
+      const open = navList.style.display === 'flex';
+      navList.style.display = open ? 'none' : 'flex';
+      if (!open) {
+        Object.assign(navList.style, {
+          flexDirection:'column', position:'absolute', top:'100%',
+          left:'0', right:'0', background:'rgba(255,255,255,.98)',
+          padding:'24px', boxShadow:'0 12px 24px rgba(0,0,0,.1)',
+          borderRadius:'0 0 12px 12px', gap:'16px', zIndex:'999'
+        });
+      }
+    });
+    navList.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navList.style.display = 'none'));
+  }
+
+  /* --- Form --- */
+  const form = document.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      const orig = btn.innerHTML;
+      btn.innerHTML = 'Sending...'; btn.disabled = true;
+      setTimeout(() => {
+        btn.innerHTML = '&#10003; Message Sent!'; btn.style.background = 'var(--navy)'; btn.style.borderColor = 'var(--navy)';
+        form.reset();
+        setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; btn.style.borderColor = ''; btn.disabled = false; }, 3000);
+      }, 1500);
+    });
+  }
+
+});
+</script>
 </body>
 </html>
